@@ -9,12 +9,13 @@ export const theme = {
         desktop: {
             default: '1.4rem',
             medium: '2rem',
+            socialIcon: '2.5rem',
             big: '3rem',
             h1: '6rem',
         }
     },
     fonts: {
-        default: '400',
+        regular: '400',
         bold: '600',
     }
 }
