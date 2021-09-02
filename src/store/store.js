@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { createContext, useState } from 'react'
 
-export const appContext = React.createContext()
+export const appContext = createContext()
 
 export const StoreProvider = ({ children }) => {
 
-    const [formValues, setFormValues] = React.useState({
+    const [formValues, setFormValues] = useState({
         startPlace: '',
         endPlace: '',
         stopsPlaces: [],
