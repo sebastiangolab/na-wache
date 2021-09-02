@@ -13,6 +13,7 @@ const H2 = styled.h2`
     font-size: ${({theme}) => theme.sizes.desktop.big};
     color: ${({theme}) => theme.colors.white};
     font-weight: ${({theme}) => theme.fonts.bold};
+    margin-bottom: 60px;
 `
 
 const Header = () => (

@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components'
 import { theme } from './assets/styles/theme'
 
 import Header from './components/Header/Header'
+import FlexContainer from './components/FlexContainer/FlexContainer'
 
 const AppWrapper = styled.div`
     padding: 18vh 9vw 0 9vw;
@@ -19,10 +20,12 @@ const App = () => {
                 <GlobalStyle />
                 <AppWrapper>
                     <Header />
-                    {/* <Container> */}
+                    <FlexContainer>
+                        <h1>TEST</h1>
+                        <h1>TEST2</h1>
                         {/* <Content /> */}
                         {/* <Footer /> */}
-                    {/* </Container> */}
+                    </FlexContainer>
                 </AppWrapper>
             </ThemeProvider>
         </StoreProvider>
