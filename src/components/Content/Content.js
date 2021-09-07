@@ -8,6 +8,12 @@ import {
 
 import styled from 'styled-components'
 
+import LocationsForm from '../../pages/LocationsForm/LocationsForm'
+import FuelConsumptionAndPriceForm from '../../pages/FuelConsumptionAndPriceForm/FuelConsumptionAndPriceForm'
+import BackAndNumberPeopleForm from '../../pages/BackAndNumberPeopleForm/BackAndNumberPeopleForm'
+import Results from '../../pages/Results/Results'
+import Page404 from '../../pages/Page404/Page404'
+
 const Wrapper = styled.div`
     width: 100%;
     max-width: 900px;
@@ -21,11 +27,11 @@ const Content = () => (
     <Wrapper>
         <Router>
             <Switch>
-                <Route exact path='/' component={() => (<h1>Step 1</h1>)} />
-                <Route exact path='/fuel-consumption-and-price' component={() => (<h1>Step 2</h1>)} />
-                <Route exact path='/back-and-number-people' component={() => (<h1>Step 3</h1>)} />
-                <Route exact path='/results' component={() => (<h1>Step 4</h1>)} />
-                <Route component={() => (<h1>404</h1>)} />
+                <Route exact path='/' component={LocationsForm} />
+                <Route exact path='/fuel-consumption-and-price' component={FuelConsumptionAndPriceForm} />
+                <Route exact path='/back-and-number-people' component={BackAndNumberPeopleForm} />
+                <Route exact path='/results' component={Results} />
+                <Route component={Page404} />
             </Switch>
         </Router>
     </Wrapper>
