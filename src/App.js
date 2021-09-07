@@ -8,6 +8,7 @@ import { theme } from './assets/styles/theme'
 
 import Header from './components/Header/Header'
 import FlexContainer from './components/FlexContainer/FlexContainer'
+import Content from './components/Content/Content'
 import Footer from './components/Footer/Footer'
 
 const AppWrapper = styled.div`
@@ -22,8 +23,7 @@ const App = () => {
                 <AppWrapper>
                     <Header />
                     <FlexContainer>
-                        <h1>Content</h1>
-                        {/* <Content /> */}
+                        <Content />
                         <Footer />
                     </FlexContainer>
                 </AppWrapper>

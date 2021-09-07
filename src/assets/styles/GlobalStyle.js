@@ -22,6 +22,8 @@ const GlobalStyle = createGlobalStyle`
         background: url(${ background });
         background-size: cover;
         background-repeat: no-repeat;
+        height: 100%;
+        min-height: 100vh;
     }
 `
 
