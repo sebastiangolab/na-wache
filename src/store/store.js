@@ -5,9 +5,6 @@ export const appContext = createContext()
 export const StoreProvider = ({ children }) => {
 
     const [formValues, setFormValues] = useState({
-        startPlace: '',
-        endPlace: '',
-        stopsPlaces: [],
         distance: 0,
         averageFuleConsumption: 0,
         averageFuelPrice: 0,

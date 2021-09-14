@@ -17,10 +17,11 @@ import Page404 from '../../pages/Page404/Page404'
 const Wrapper = styled.div`
     width: 100%;
     max-width: 900px;
-    height: 382px;
+    min-height: 382px;
     padding: 47px 53px;
     background-color: ${({theme}) => theme.colors.white};
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.25);
+    border-radius: 3px;
 `
 
 const Content = () => (

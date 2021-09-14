@@ -4,6 +4,7 @@ export const theme = {
         black: '#000',
         white: '#fff',
         gray: '#ddd',
+        red: '#f00',
     },
     sizes: {
         desktop: {
@@ -13,6 +14,9 @@ export const theme = {
             big: '3rem',
             h1: '6rem',
         }
+    },
+    fontFamily: {
+        montserrat: '"Montserrat", sans-serif !important',
     },
     fonts: {
         regular: '400',

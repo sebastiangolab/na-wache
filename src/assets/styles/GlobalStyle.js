@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         font-size: 1.6rem;
-        font-family: 'Montserrat', sans-serif !important;
+        font-family: ${({theme}) => theme.fontFamily.montserrat};
         background: url(${ background });
         background-size: cover;
         background-repeat: no-repeat;
