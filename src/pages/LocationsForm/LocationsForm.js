@@ -27,7 +27,6 @@ const LocationsForm = () => {
         />
     )) 
 
-    console.log(placesValue)
     return (
         <>
             <MapInput 
