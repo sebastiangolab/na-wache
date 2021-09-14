@@ -16,6 +16,8 @@ const centerMap = {
 
 const mapOptions = {
     disableDefaultUI: true,
+    disableDoubleClickZoom: true,
+    draggable: false,
 }
 
 const SearchGoogleMap = () => {
