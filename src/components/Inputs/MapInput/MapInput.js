@@ -3,6 +3,7 @@ import Modal from '../../Modal/Modal'
 import InputWrapper from '../styles/InputWrapper'
 import Label from '../styles/Label'
 import Input from '../styles/Input'
+import SearchGoogleMap from '../../SearchGoogleMap/SearchGoogleMap'
 
 const MapInput = ({ id, label, placesValue, setPlacesValue }) => {
 
@@ -37,7 +38,7 @@ const MapInput = ({ id, label, placesValue, setPlacesValue }) => {
                 hideModal={hideModal}
                 isOpen={ModalOpen}
             >
-                <h1>{label}</h1>
+                <SearchGoogleMap />
             </Modal>
         </>
     )
