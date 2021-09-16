@@ -38,7 +38,7 @@ const MapInput = ({ id, label, placesValue, setPlacesValue }) => {
                 hideModal={hideModal}
                 isOpen={ModalOpen}
             >
-                <SearchGoogleMap />
+                <SearchGoogleMap isModalOpen={ModalOpen} />
             </Modal>
         </>
     )

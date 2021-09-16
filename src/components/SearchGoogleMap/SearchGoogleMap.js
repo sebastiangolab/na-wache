@@ -1,6 +1,9 @@
 import React, { useCallback, useRef } from 'react'
+import styled from 'styled-components'
 import { GoogleMap, useLoadScript } from '@react-google-maps/api'
-import { GOOGLE_MAPS_API_KEY } from '../../assets/keys/GoogleMapsApiKey'
+import { GOOGLE_MAPS_API_KEY } from '../../assets/keys/GoogleMapsApiKey' 
+import SearchMapInput from '../Inputs/SearchMapInput/SearchMapInput'
+import CloseMapButton from '../CloseMapButton/CloseMapButton'
 
 const mapContainerStyle = {
     width: '80vw',
@@ -20,7 +23,11 @@ const mapOptions = {
     draggable: false,
 }
 
-const SearchGoogleMap = () => {
+const Wrapper = styled.div`
+    position: relative;
+`
+
+const SearchGoogleMap = ({ isModalOpen }) => {
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: GOOGLE_MAPS_API_KEY
@@ -30,15 +37,20 @@ const SearchGoogleMap = () => {
     const onMapLoad = useCallback(map => {
         mapRef.current = map
     }, [])
+
     
     return isLoaded ? (
-        <GoogleMap
-            mapContainerStyle={mapContainerStyle}
-            center={centerMap}
-            zoom={zoomMap}
-            options={mapOptions}
-            onLoad={onMapLoad}
-        />
+        <Wrapper>
+            <CloseMapButton />
+            <SearchMapInput isModalOpen={isModalOpen} />
+            <GoogleMap
+                mapContainerStyle={mapContainerStyle}
+                center={centerMap}
+                zoom={zoomMap}
+                options={mapOptions}
+                onLoad={onMapLoad}
+            />
+        </Wrapper>
     ) : <></>
 }
 
