@@ -1,4 +1,5 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useRef, useContext } from 'react'
+import { ModalContext } from '../Modal/Modal'
 import styled from 'styled-components'
 import { GoogleMap, useLoadScript } from '@react-google-maps/api'
 import { GOOGLE_MAPS_API_KEY } from '../../assets/keys/GoogleMapsApiKey' 
@@ -27,7 +28,9 @@ const Wrapper = styled.div`
     position: relative;
 `
 
-const SearchGoogleMap = ({ isModalOpen }) => {
+const SearchGoogleMap = () => {
+
+    const { hideModal } = useContext(ModalContext)
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: GOOGLE_MAPS_API_KEY
@@ -41,8 +44,8 @@ const SearchGoogleMap = ({ isModalOpen }) => {
     
     return isLoaded ? (
         <Wrapper>
-            <CloseMapButton />
-            <SearchMapInput isModalOpen={isModalOpen} />
+            <CloseMapButton onClick={hideModal} />
+            <SearchMapInput />
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={centerMap}

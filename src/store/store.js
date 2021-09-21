@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
 
-export const appContext = createContext()
+export const AppContext = createContext()
 
 export const StoreProvider = ({ children }) => {
 
@@ -13,11 +13,11 @@ export const StoreProvider = ({ children }) => {
     })
 
     return (
-        <appContext.Provider value={{
+        <AppContext.Provider value={{
             formValues,
             setFormValues
         }}>
             {children}
-        </appContext.Provider>
+        </AppContext.Provider>
     )
 }

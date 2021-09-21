@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react'
+import { ModalContext } from '../../Modal/Modal'
 import styled from 'styled-components'
 import Input from '../styles/Input'
 
@@ -32,7 +33,9 @@ const Button = styled.button`
     }
 `
 
-const SearchMapInput = ({ isModalOpen }) => {
+const SearchMapInput = () => {
+
+    const { isModalOpen } = useContext(ModalContext)
 
     const inputRef = useRef(null)
     useEffect(

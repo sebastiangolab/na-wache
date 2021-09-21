@@ -1,4 +1,4 @@
-import React, { createRef, useEffect } from 'react'
+import React, { createRef, useEffect, createContext } from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 
@@ -16,6 +16,8 @@ const Wrapper = styled.dialog`
         backdrop-filter: blur(3px);
     }
 `
+
+export const ModalContext = createContext()
 
 const Modal = ({ hideModal, isOpen, children }) => {
 
@@ -45,7 +47,12 @@ const Modal = ({ hideModal, isOpen, children }) => {
 
     return ReactDOM.createPortal(
         <Wrapper ref={dialogRef} onClick={hideDialogWhenOutside}>
-            {children}
+            <ModalContext.Provider value={{
+                isModalOpen: isOpen,
+                hideModal
+            }}>
+                {children}
+            </ModalContext.Provider>
         </Wrapper>,
         document.body
     )
