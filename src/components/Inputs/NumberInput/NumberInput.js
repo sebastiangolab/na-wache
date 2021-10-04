@@ -1,7 +1,7 @@
 import React from 'react'
-import InputWrapper from '../styles/InputWrapper'
-import Label from '../styles/Label'
-import Input from '../styles/Input'
+import InputWrapper from '../../../assets/styles/InputWrapper/InputWrapper'
+import Label from '../../../assets/styles/Label/Label'
+import Input from '../../../assets/styles/Input/Input'
 
 const NumberInput = ({ label, value, setValue }) => {
 

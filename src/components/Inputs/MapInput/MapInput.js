@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Modal from '../../Modal/Modal'
-import InputWrapper from '../styles/InputWrapper'
-import Label from '../styles/Label'
-import Input from '../styles/Input'
+import InputWrapper from '../../../assets/styles/InputWrapper/InputWrapper'
+import Label from '../../../assets/styles/Label/Label'
+import Input from '../../../assets/styles/Input/Input'
 import SearchGoogleMap from '../../SearchGoogleMap/SearchGoogleMap'
 
 const MapInput = ({ id, label, placesValue, setPlacesValue }) => {

@@ -1,18 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
+import Button from '../../assets/styles/Button/Button'
 
-const Wrapper = styled.button`
-    font-family: ${({theme}) => theme.fontFamily.montserrat};
+const Wrapper = styled(Button)`
+    width: auto;
+    font-size: ${({theme}) => theme.sizes.desktop.default};
     margin-bottom: 35px;
-    color: ${({theme}) => theme.colors.white};
-    background-color: ${({theme}) => theme.colors.blue};
-    padding: 5px 12px;
-    border: none;
-    box-shadow: none;
-    cursor: pointer;
+    padding: 8px 14px;
     display: flex;
     align-items: center;
-    border-radius: 3px;
+    justify-content: center;
 
     & strong {
         font-size: 25px;

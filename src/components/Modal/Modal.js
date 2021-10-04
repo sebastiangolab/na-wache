@@ -9,6 +9,7 @@ const Wrapper = styled.dialog`
     transform: translate(-50%, -50%);
     padding: 5px;
     border: 1px solid ${({theme}) => theme.colors.gray};
+    z-index: -1;
 
     &::backdrop {
         width: 100%;
@@ -54,7 +55,7 @@ const Modal = ({ hideModal, isOpen, children }) => {
                 {children}
             </ModalContext.Provider>
         </Wrapper>,
-        document.body
+       document.body
     )
 }
 
