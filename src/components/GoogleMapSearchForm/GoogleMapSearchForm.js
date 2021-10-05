@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useContext } from 'react'
-import { ModalContext } from '../../Modal/Modal'
+import { ModalContext } from '../Modal/Modal'
 import styled from 'styled-components'
-import Input from '../../../assets/styles/Input/Input'
-import Button from '../../../assets/styles/Button/Button'
+import Input from '../../assets/styles/Input/Input'
+import Button from '../../assets/styles/Button/Button'
+import AcceptGoogleMapButton from '../Buttons/AcceptGoogleMapButton/AcceptGoogleMapButton'
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
@@ -57,9 +58,9 @@ const StyledButton = styled(Button)`
     margin-left: 5px;
 `
 
-const SearchMapInput = ({ mapPanTo }) => {
+const SearchMapInput = ({ mapPanTo, setInputAdressObject }) => {
 
-    const { isModalOpen } = useContext(ModalContext)
+    const { isModalOpen, hideModal } = useContext(ModalContext)
 
     const inputRef = useRef(null)
     useEffect(
@@ -83,7 +84,7 @@ const SearchMapInput = ({ mapPanTo }) => {
         },
     })
 
-    const handleOnChange = e => setValue(e.target.value)
+    const handleOnChange = e => setValue(e.target.value) 
 
     const getAutoCompleteResults = async (address) => {
         try {
@@ -92,12 +93,14 @@ const SearchMapInput = ({ mapPanTo }) => {
 
             const coords = await getLatLng(results[0])
             mapPanTo(coords.lat, coords.lng)
-            
+
+            setInputAdressObject(results[0].formatted_address, coords)
             clearSuggestions()
         } catch (error) {
             alert('Nie znaleziono takiego adresu') 
             setValue('', false)
             mapPanTo(null, null)
+            setInputAdressObject('', null)
             clearSuggestions()
         }
     }
@@ -111,26 +114,31 @@ const SearchMapInput = ({ mapPanTo }) => {
 
     const handleOnClick = () => getAutoCompleteResults(value) 
 
+    const handleOnClickAcceptButton = () => hideModal()
+
     return (
-        <Wrapper>
-            <StyledCombobox onSelect={handleSelect}>
-                <StyledInput
-                    type='text'
-                    value={value}
-                    onChange={handleOnChange}
-                    placeholder='Wyszukaj miejsce'
-                    ref={inputRef}
-                    onKeyPress={handleKeyPress}
-                />
-                <StyledComboboxList>
-                    {value.length >= 3 && status === "OK" &&
-                    data.map(({ description }) => (
-                        <StyledComboboxOption key={description} value={description} />
-                    ))}
-                </StyledComboboxList>
-            </StyledCombobox>
-            <StyledButton onClick={handleOnClick}>Szukaj</StyledButton> 
-        </Wrapper>
+        <>
+            <Wrapper>
+                <StyledCombobox onSelect={handleSelect}>
+                    <StyledInput
+                        type='text'
+                        value={value}
+                        onChange={handleOnChange}
+                        placeholder='Wyszukaj miejsce'
+                        ref={inputRef}
+                        onKeyPress={handleKeyPress}
+                    />
+                    <StyledComboboxList>
+                        {value.length >= 3 && status === "OK" &&
+                        data.map(({ description }) => (
+                            <StyledComboboxOption key={description} value={description} />
+                        ))}
+                    </StyledComboboxList>
+                </StyledCombobox>
+                <StyledButton onClick={handleOnClick}>Szukaj</StyledButton> 
+            </Wrapper>
+            <AcceptGoogleMapButton onClick={handleOnClickAcceptButton}>Zatwierdź</AcceptGoogleMapButton>
+        </>
     )
 }
 

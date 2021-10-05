@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from '../../assets/styles/Button/Button'
+import Button from '../../../assets/styles/Button/Button'
 
 const Wrapper = styled(Button)`
     width: auto;
@@ -23,7 +23,11 @@ const AddStopPlaceButton = ({ placesValue, setPlacesValue, stopInputs, setStopIn
             ...placesValue,
             {
                 id: `stop${stopInputs.length + 1}`,
-                value: null
+                adress: '',
+                coords: {
+                    lat: null,
+                    lng: null
+                }
             }
         ])
 

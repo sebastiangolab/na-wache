@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 const Wrapper = styled.button`
     position: absolute;
-    right: -5px;
-    top: -5px;
+    right: 0;
+    top: 0;
     width: 55px;
     height: 55px;
     display: flex;
@@ -18,6 +18,8 @@ const Wrapper = styled.button`
     box-shadow: none;
     transition: background-color 0.3s;
     cursor: pointer;
+    border-radius: 0;
+    line-height: 1;
 
     &:hover {
         background-color: ${({theme}) => theme.colors.blueHover};

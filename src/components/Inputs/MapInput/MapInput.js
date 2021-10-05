@@ -3,7 +3,7 @@ import Modal from '../../Modal/Modal'
 import InputWrapper from '../../../assets/styles/InputWrapper/InputWrapper'
 import Label from '../../../assets/styles/Label/Label'
 import Input from '../../../assets/styles/Input/Input'
-import SearchGoogleMap from '../../SearchGoogleMap/SearchGoogleMap'
+import GoogleMap from '../../GoogleMap/GoogleMap'
 
 const MapInput = ({ id, label, placesValue, setPlacesValue }) => {
 
@@ -13,14 +13,14 @@ const MapInput = ({ id, label, placesValue, setPlacesValue }) => {
 
     const [inputValue, setInputValue] = useState('')
 
-    const handleOnClick = () => {
-        setInputValue('obiekt mapy')
+    const setInputAdressObject = (adress, coords) => {
+        setInputValue(adress)
         
-        const updatedPlacesValue = placesValue.map(place => place.id === id ? {...place, value: 'obiekt mapy'} : place)
+        const updatedPlacesValue = placesValue.map(place => place.id === id ? {...place, adress, coords} : place)
         setPlacesValue(updatedPlacesValue)
-
-        showModal()
     }
+
+    const handleOnClick = () => showModal()
 
     return (
         <>
@@ -38,7 +38,7 @@ const MapInput = ({ id, label, placesValue, setPlacesValue }) => {
                 hideModal={hideModal}
                 isOpen={ModalOpen}
             >
-                <SearchGoogleMap />
+                <GoogleMap setInputAdressObject={setInputAdressObject} />
             </Modal>
         </>
     )

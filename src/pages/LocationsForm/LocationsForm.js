@@ -1,30 +1,53 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import MapInput from '../../components/Inputs/MapInput/MapInput'
-import AddStopPlaceButton from '../../components/AddStopPlaceButton/AddStopPlaceButton' 
+import AddStopPlaceButton from '../../components/Buttons/AddStopPlaceButton/AddStopPlaceButton' 
+import DeleteStopPlaceButton from '../../components/Buttons/DeleteStopPlaceButton/DeleteStopPlaceButton'
+
+const StopInputWrapper = styled.div`
+    display: flex;
+    align-items: center;
+`
 
 const LocationsForm = () => {
 
     const [placesValue, setPlacesValue] = useState([
         {
             id: 'startPlace',
-            value: null
+            adress: '',
+            coords: {
+                lat: null,
+                lng: null
+            }
         },
         {
             id: 'endPlace',
-            value: null
+            adress: '',
+            coords: {
+                lat: null,
+                lng: null
+            }
         }
     ])
 
     const [stopInputs, setStopInputs] = useState([])
 
     const stopInputsElements = stopInputs.map(input => (
-        <MapInput 
-            key={input.id}
-            id={input.id}
-            label={input.label}  
-            placesValue={placesValue}
-            setPlacesValue={setPlacesValue}
-        />
+        <StopInputWrapper key={input.id}>
+            <MapInput 
+                id={input.id}
+                label={input.label}  
+                placesValue={placesValue}
+                setPlacesValue={setPlacesValue}
+            />
+            <DeleteStopPlaceButton
+                id={input.id}
+                placesValue={placesValue}
+                setPlacesValue={setPlacesValue}
+                stopInputs={stopInputs}
+                setStopInputs={setStopInputs}
+            />
+        </StopInputWrapper>
     )) 
 
     return (

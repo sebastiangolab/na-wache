@@ -7,8 +7,8 @@ const Wrapper = styled.dialog`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    padding: 5px;
-    border: 1px solid ${({theme}) => theme.colors.gray};
+    padding: 0;
+    border: none;
     z-index: -1;
 
     &::backdrop {

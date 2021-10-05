@@ -3,8 +3,8 @@ import { ModalContext } from '../Modal/Modal'
 import styled from 'styled-components'
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
 import { GOOGLE_MAPS_API_KEY } from '../../assets/keys/GoogleMapsApiKey' 
-import SearchMapInput from '../Inputs/SearchMapInput/SearchMapInput'
-import CloseMapButton from '../CloseMapButton/CloseMapButton'
+import GoogleMapSearchForm from '../GoogleMapSearchForm/GoogleMapSearchForm'
+import CloseMapButton from '../Buttons/CloseMapButton/CloseMapButton'
 
 const mapContainerStyle = {
     width: '80vw',
@@ -23,16 +23,18 @@ const mapOptions = {
     disableDefaultUI: true,
     disableDoubleClickZoom: false,
     draggable: true,
-    zoomControl: true,
+    zoomControl: false,
 }
 
 const libraries = ['places']
 
 const Wrapper = styled.div`
     position: relative;
+    overflow: hidden;
+    border: 1px solid ${({theme}) => theme.colors.white};
 `
 
-const SearchGoogleMap = () => {
+const SearchGoogleMap = ({ setInputAdressObject }) => {
 
     const { hideModal } = useContext(ModalContext)
     const [MarkerCoords, setMarkerCoords] = useState(null)
@@ -74,7 +76,7 @@ const SearchGoogleMap = () => {
                 }
             </GoogleMap>
             <CloseMapButton onClick={hideModal} />
-            <SearchMapInput mapPanTo={mapPanTo} />
+            <GoogleMapSearchForm mapPanTo={mapPanTo} setInputAdressObject={setInputAdressObject} />
         </Wrapper>
     ) : <></>
 }
