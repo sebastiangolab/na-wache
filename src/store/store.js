@@ -6,9 +6,9 @@ export const StoreProvider = ({ children }) => {
 
     const [formValues, setFormValues] = useState({
         distance: 0,
-        averageFuleConsumption: 0,
-        averageFuelPrice: 0,
-        numberPeople: 0,
+        fuelConsumption: '',
+        fuelPrice: '',
+        numberPeople: 1,
         isWayBack: false
     })
 
