@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const Button = styled.button`
     width: 260px;
+    padding: 25px 13px;
     font-size: ${({theme}) => theme.sizes.desktop.medium};
     font-family: ${({theme}) => theme.fontFamily.montserrat};
     line-height: 1;

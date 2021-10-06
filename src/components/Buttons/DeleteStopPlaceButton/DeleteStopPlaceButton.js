@@ -4,13 +4,12 @@ import Button from '../../../assets/styles/Button/Button'
 
 const Wrapper = styled(Button)`
     width: auto;
-    padding: 15px 20px;
-    margin-bottom: 5px;
-    margin-left: 5px;
+    font-size: ${({theme}) => theme.sizes.desktop.default};
+    margin-bottom: 35px;
+    padding: 12px 14px;
 `
 
 const DeleteStopPlaceButton = ({
-    id,
     placesValue,
     setPlacesValue,
     stopInputs,
@@ -18,33 +17,14 @@ const DeleteStopPlaceButton = ({
 }) => {
 
     const handleOnClick = () => {
-        const filteredPlacesValue = placesValue.filter(place => place.id !== id)
-        let counterPlacesValue = 0
-        const updatedPlacesValue = filteredPlacesValue.map(place => {
-            if (place.id === 'startPlace' || place.id === 'endPlace') return place
+        const filteredStopInputs = stopInputs.filter((stop, index) => index !== stopInputs.length - 1) 
+        const filteredPlacesValue = placesValue.filter((place, index) => index !== placesValue.length - 1)
 
-            counterPlacesValue++
-            return ({
-                id: `stop${counterPlacesValue}`,
-                adress: place.adress,
-                coords: place.coords
-            })
-        })
-        setPlacesValue(updatedPlacesValue) 
-
-        const filteredStopInputs = stopInputs.filter(stop => stop.id !== id) 
-        let counterStopInputs = 0
-        const updatedStopInputs = filteredStopInputs.map(stop => {
-            counterStopInputs++
-            return ({
-                id: `stop${counterStopInputs}`,
-                label: `Przystanek nr. ${counterStopInputs}`
-            })
-        })
-        setStopInputs(updatedStopInputs)
+        setStopInputs(filteredStopInputs)
+        setPlacesValue(filteredPlacesValue)
     }
 
-    return <Wrapper onClick={handleOnClick}>X</Wrapper>
+    return <Wrapper onClick={handleOnClick}>X Usuń przystanek</Wrapper>
 }
 
 export default DeleteStopPlaceButton

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Button from '../../../assets/styles/Button/Button'
+import { ValidateMessageContext } from '../../Content/Content'
 
 const Wrapper = styled(Button)`
     width: auto;
@@ -18,26 +19,58 @@ const Wrapper = styled(Button)`
 `
 const AddStopPlaceButton = ({ placesValue, setPlacesValue, stopInputs, setStopInputs }) => {
 
-    const handleOnClick = () => {
-        setPlacesValue([
-            ...placesValue,
-            {
-                id: `stop${stopInputs.length + 1}`,
-                adress: '',
-                coords: {
-                    lat: null,
-                    lng: null
-                }
-            }
-        ])
+    const { setValidateMessageText } = useContext(ValidateMessageContext)
 
-        setStopInputs([
-            ...stopInputs,
-            {
-                id: `stop${stopInputs.length + 1}`,
-                label: `Przystanek nr. ${stopInputs.length + 1}`
-            }
-        ])
+    const validateAddStopPlaceButton = () => {
+
+        let result = true
+
+        placesValue.forEach((place, index) => {
+            if (
+                place.id === 'startPlace' 
+                && place.adress === ''
+            ) result = 'Wypełnij najpierw startową i końcową lokalizację' 
+                
+            if (
+                place.id === 'endPlace' 
+                && place.adress === ''
+            ) result = 'Wypełnij najpierw startową i końcową lokalizację' 
+                
+            if (
+                placesValue.length > 2
+                && index === placesValue.length - 1
+                && place.adress === ''
+            ) result = 'Uzupełnij ostatni przystanek'
+        });
+
+        setValidateMessageText('')
+        return result
+    }
+
+    const handleOnClick = () => {
+        if (validateAddStopPlaceButton() === true) {
+            setPlacesValue([
+                ...placesValue,
+                {
+                    id: `stop${stopInputs.length + 1}`,
+                    adress: '',
+                    coords: {
+                        lat: null,
+                        lng: null
+                    }
+                }
+            ])
+
+            setStopInputs([
+                ...stopInputs,
+                {
+                    id: `stop${stopInputs.length + 1}`,
+                    label: `Przystanek nr. ${stopInputs.length + 1}`
+                }
+            ])
+        } else {
+            setValidateMessageText(validateAddStopPlaceButton())
+        }
     }
 
     return (

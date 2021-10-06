@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext, useState } from 'react'
 
 import {
     BrowserRouter as Router,
@@ -14,6 +14,8 @@ import BackAndNumberPeopleForm from '../../pages/BackAndNumberPeopleForm/BackAnd
 import Results from '../../pages/Results/Results'
 import Page404 from '../../pages/Page404/Page404'
 
+import ValidateMessage from '../ValidateMessage/ValidateMessage'
+
 const Wrapper = styled.div`
     width: 100%;
     max-width: 900px;
@@ -24,18 +26,31 @@ const Wrapper = styled.div`
     border-radius: 3px;
 `
 
-const Content = () => (
-    <Wrapper>
-        <Router>
-            <Switch>
-                <Route exact path='/' component={LocationsForm} />
-                <Route exact path='/fuel-consumption-and-price' component={FuelConsumptionAndPriceForm} />
-                <Route exact path='/back-and-number-people' component={BackAndNumberPeopleForm} />
-                <Route exact path='/results' component={Results} />
-                <Route component={Page404} />
-            </Switch>
-        </Router>
-    </Wrapper>
-)
+export const ValidateMessageContext = createContext()
+
+const Content = () => {
+
+    const [validateMessageText, setValidateMessageText] = useState('')
+
+    return (
+        <Wrapper>
+            {validateMessageText !== '' && <ValidateMessage message={validateMessageText} />}
+            <ValidateMessageContext.Provider value={{
+                validateMessageText,
+                setValidateMessageText,
+            }}>
+                <Router>
+                    <Switch>
+                        <Route exact path='/' component={LocationsForm} />
+                        <Route exact path='/fuel-consumption-and-price' component={FuelConsumptionAndPriceForm} />
+                        <Route exact path='/back-and-number-people' component={BackAndNumberPeopleForm} />
+                        <Route exact path='/results' component={Results} />
+                        <Route component={Page404} />
+                    </Switch>
+                </Router>
+            </ValidateMessageContext.Provider>
+        </Wrapper>
+    )
+}
 
 export default Content

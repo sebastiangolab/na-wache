@@ -1,8 +1,8 @@
 import React, { useCallback, useRef, useContext, useState } from 'react'
 import { ModalContext } from '../Modal/Modal'
 import styled from 'styled-components'
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
-import { GOOGLE_MAPS_API_KEY } from '../../assets/keys/GoogleMapsApiKey' 
+import { GoogleMap, Marker } from '@react-google-maps/api'
+import GoogleMapLoad from '../GoogleMapLoad/GoogleMapLoad'
 import GoogleMapSearchForm from '../GoogleMapSearchForm/GoogleMapSearchForm'
 import CloseMapButton from '../Buttons/CloseMapButton/CloseMapButton'
 
@@ -26,23 +26,16 @@ const mapOptions = {
     zoomControl: false,
 }
 
-const libraries = ['places']
-
 const Wrapper = styled.div`
     position: relative;
     overflow: hidden;
     border: 1px solid ${({theme}) => theme.colors.white};
 `
 
-const SearchGoogleMap = ({ setInputAdressObject }) => {
+const GoogleMapWrapper = ({ setInputAdressObject }) => {
 
     const { hideModal } = useContext(ModalContext)
     const [MarkerCoords, setMarkerCoords] = useState(null)
-
-    const { isLoaded } = useLoadScript({
-        googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-        libraries: libraries
-    })
 
     const mapRef = useRef()
     const onMapLoad = useCallback(map => {
@@ -60,25 +53,27 @@ const SearchGoogleMap = ({ setInputAdressObject }) => {
         setMarkerCoords({ lat, lng })
     }
     
-    return isLoaded ? (
+    return (
         <Wrapper>
-            <GoogleMap
-                mapContainerStyle={mapContainerStyle}
-                center={centerMap}
-                zoom={zoomMap}
-                options={mapOptions}
-                onLoad={onMapLoad}
-            >   
-                {MarkerCoords !== null &&
-                    <Marker 
-                        position={{lat: MarkerCoords.lat, lng: MarkerCoords.lng}}
-                    />
-                }
-            </GoogleMap>
-            <CloseMapButton onClick={hideModal} />
-            <GoogleMapSearchForm mapPanTo={mapPanTo} setInputAdressObject={setInputAdressObject} />
+            <GoogleMapLoad>
+                <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    center={centerMap}
+                    zoom={zoomMap}
+                    options={mapOptions}
+                    onLoad={onMapLoad}
+                >   
+                    {MarkerCoords !== null &&
+                        <Marker 
+                            position={{lat: MarkerCoords.lat, lng: MarkerCoords.lng}}
+                        />
+                    }
+                </GoogleMap>
+                <CloseMapButton onClick={hideModal} />
+                <GoogleMapSearchForm mapPanTo={mapPanTo} setInputAdressObject={setInputAdressObject} />
+            </GoogleMapLoad>
         </Wrapper>
-    ) : <></>
+    )
 }
 
-export default SearchGoogleMap 
+export default GoogleMapWrapper 

@@ -14,6 +14,7 @@ const NumberInput = ({ label, value, setValue }) => {
                 type='number'
                 value={value}
                 onChange={handleOnChange}
+                min={'1'}
             />
         </InputWrapper>
     )

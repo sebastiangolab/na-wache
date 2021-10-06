@@ -56,6 +56,7 @@ const StyledComboboxOption = styled(ComboboxOption)`
 const StyledButton = styled(Button)`
     width: 150px;
     margin-left: 5px;
+    padding: 5px;
 `
 
 const SearchMapInput = ({ mapPanTo, setInputAdressObject }) => {

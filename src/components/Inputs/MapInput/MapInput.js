@@ -3,7 +3,7 @@ import Modal from '../../Modal/Modal'
 import InputWrapper from '../../../assets/styles/InputWrapper/InputWrapper'
 import Label from '../../../assets/styles/Label/Label'
 import Input from '../../../assets/styles/Input/Input'
-import GoogleMap from '../../GoogleMap/GoogleMap'
+import GoogleMapWrapper from '../../GoogleMapWrapper/GoogleMapWrapper'
 
 const MapInput = ({ id, label, placesValue, setPlacesValue }) => {
 
@@ -38,7 +38,7 @@ const MapInput = ({ id, label, placesValue, setPlacesValue }) => {
                 hideModal={hideModal}
                 isOpen={ModalOpen}
             >
-                <GoogleMap setInputAdressObject={setInputAdressObject} />
+                <GoogleMapWrapper setInputAdressObject={setInputAdressObject} />
             </Modal>
         </>
     )
