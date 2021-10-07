@@ -1,8 +1,62 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import NumberInput from '../../components/Inputs/NumberInput/NumberInput'
+import Button from '../../assets/styles/Button/Button'
+import SelectInput from '../../components/Inputs/SelectInput/SelectInput'
+import { ValidateMessageContext } from '../../components/Content/Content'
+import { AppContext } from '../../store/store'
+
+const selectOptions = [
+    { value: false, label: 'Nie' },
+    { value: true, label: 'Tak' }
+]
 
 const BackAndNumberPeopleForm = () => {
+
+    const { setValidateMessageText } = useContext(ValidateMessageContext) 
+    const { formValues, setFormValues } = useContext(AppContext)
+
+    const [numberPeople, setNumberPeople] = useState(formValues.numberPeople)
+    const [isWayBack, setIsWayBack] = useState(selectOptions[0])
+
+    const history = useHistory()
+
+    const validateFuelConsumptionAndPriceForm = () => {
+        let result = true
+
+        if (numberPeople <= 0) 
+            result = 'Ilość osób musi być większa niż 0' 
+
+        setValidateMessageText('')
+        return result
+    }
+    
+    const handleOnClick = () => {
+        if (validateFuelConsumptionAndPriceForm() === true) {
+            setFormValues({
+                ...formValues,
+                numberPeople: numberPeople,
+                isWayBack: isWayBack,
+            })
+
+            history.push('/results')
+        } else {
+            setValidateMessageText(validateFuelConsumptionAndPriceForm())
+        }
+    }
+
     return (
-        <h1>Back And Number People Form</h1>
+        <>
+            <NumberInput
+                label={'Ilość osób'}
+                value={numberPeople}
+                setValue={setNumberPeople}
+            />
+
+            <SelectInput label={'Podróż w 2 strony?'} options={selectOptions} value={isWayBack} setValue={setIsWayBack} />
+
+            <Button onClick={handleOnClick}>Przejdź dalej</Button>
+        </>
     )
 }
 

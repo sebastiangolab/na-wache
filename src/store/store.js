@@ -8,7 +8,7 @@ export const StoreProvider = ({ children }) => {
         distance: 0,
         fuelConsumption: '',
         fuelPrice: '',
-        numberPeople: 1,
+        numberPeople: '',
         isWayBack: false
     })
 
