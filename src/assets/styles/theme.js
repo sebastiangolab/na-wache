@@ -14,6 +14,8 @@ export const theme = {
             medium: '2rem',
             socialIcon: '2.5rem',
             big: '3rem',
+            resultTitle: '1.8rem',
+            resultValue: '2.5rem',
             h1: '6rem',
         }
     },

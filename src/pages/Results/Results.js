@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { AppContext } from '../../store/store'
 
 const Wrapper = styled.div`
     display: flex;
@@ -9,33 +10,51 @@ const Wrapper = styled.div`
 `
 
 const ResultWrapper = styled.div`
-    margin-bottom: 55px;
+    margin-bottom: 35px;
 `
 
 const ResultTitle = styled.h2`
-    font-size: ${({theme}) => theme.sizes.desktop.medium};
+    font-size: ${({theme}) => theme.sizes.desktop.resultTitle};
     font-weight: ${({theme}) => theme.fonts.bold};
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 `
 
 const ResultValue = styled.p`
     color: ${({theme}) => theme.colors.blue};
-    font-size: ${({theme}) => theme.sizes.desktop.big};
+    font-size: ${({theme}) => theme.sizes.desktop.resultValue};
     font-weight: ${({theme}) => theme.fonts.bold};
 `
 
 const Results = () => {
+
+    const { formValues } = useContext(AppContext)
+    const {
+        distance,
+        fuelConsumption,
+        fuelPrice,
+        numberPeople,
+        isWayBack,
+    } = formValues
+
+    const finalDistance = distance * isWayBack.value
+    const priceForTravel = (fuelConsumption / 100) * distance * fuelPrice * isWayBack.value
+    const priceForPerson = priceForTravel / numberPeople
+
     return (
         <Wrapper>
             <ResultWrapper>
-                <ResultTitle>Cała podróż będzie kosztować:</ResultTitle>
-                <ResultValue>150 zł</ResultValue>
+                <ResultTitle>Całkowity dystans wynosi:</ResultTitle>
+                <ResultValue>{finalDistance.toFixed(2)} km</ResultValue>
             </ResultWrapper>
 
             <ResultWrapper>
-                <ResultTitle>Więc na 5 wychodzi po:</ResultTitle>
-                <ResultValue>30 zł</ResultValue>
+                <ResultTitle>Cała podróż będzie kosztować:</ResultTitle>
+                <ResultValue>{priceForTravel.toFixed(2)} zł</ResultValue>
+            </ResultWrapper>
+
+            <ResultWrapper>
+                <ResultTitle>Koszt przy podziale na {numberPeople}:</ResultTitle>
+                <ResultValue>{priceForPerson.toFixed(2)} zł</ResultValue>
             </ResultWrapper>
         </Wrapper>
     )

@@ -7,8 +7,8 @@ import { ValidateMessageContext } from '../../components/Content/Content'
 import { AppContext } from '../../store/store'
 
 const selectOptions = [
-    { value: false, label: 'Nie' },
-    { value: true, label: 'Tak' }
+    { value: 1, label: 'Nie' },
+    { value: 2, label: 'Tak' }
 ]
 
 const BackAndNumberPeopleForm = () => {
