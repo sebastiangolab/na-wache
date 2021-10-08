@@ -1,8 +1,10 @@
-import React, { useContext, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import React, { useContext, useState, useLayoutEffect } from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
+
 import NumberInput from '../../components/Inputs/NumberInput/NumberInput'
 import Button from '../../assets/styles/Button/Button'
 import SelectInput from '../../components/Inputs/SelectInput/SelectInput'
+
 import { ValidateMessageContext } from '../../components/Content/Content'
 import { AppContext } from '../../store/store'
 
@@ -14,12 +16,26 @@ const selectOptions = [
 const BackAndNumberPeopleForm = () => {
 
     const { setValidateMessageText } = useContext(ValidateMessageContext) 
-    const { formValues, setFormValues } = useContext(AppContext)
+    const { setPath, formValues, setFormValues } = useContext(AppContext)
+
+    const history = useHistory()
+    const location = useLocation()
+
+    useLayoutEffect(
+        () => {
+
+            if (
+                formValues.distance <= 0
+                || formValues.fuelConsumption !== ''
+                || formValues.fuelPrice !== ''
+            ) history.push('/')
+
+            setPath(location.pathname)
+        }, []
+    )
 
     const [numberPeople, setNumberPeople] = useState(formValues.numberPeople)
     const [isWayBack, setIsWayBack] = useState(selectOptions[0])
-
-    const history = useHistory()
 
     const validateFuelConsumptionAndPriceForm = () => {
         let result = true

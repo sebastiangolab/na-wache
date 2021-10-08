@@ -1,26 +1,21 @@
 import React from 'react'
-
 import styled from 'styled-components'
+import { FaCarAlt } from "react-icons/fa";
 
 const H1 = styled.h1`
     font-size: ${({theme}) => theme.sizes.desktop.h1};
     color: ${({theme}) => theme.colors.white};
     font-weight: ${({theme}) => theme.fonts.bold};
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
 `
 
-const H2 = styled.h2`
-    font-size: ${({theme}) => theme.sizes.desktop.big};
-    color: ${({theme}) => theme.colors.white};
-    font-weight: ${({theme}) => theme.fonts.regular};
-    margin-bottom: 50px;
+const HeaderIcon = styled(FaCarAlt)`
+    font-size: ${({theme}) => theme.sizes.desktop.h1Icon};
+    margin-right: 20px;
 `
 
-const Header = () => (
-    <>
-        <H1>Kalkulator na wache</H1>
-        <H2>Oblicz po ile składka na paliwo</H2>
-    </>
-)
+const Header = () => <H1><HeaderIcon />Kalkulator na wache</H1>
 
 export default Header

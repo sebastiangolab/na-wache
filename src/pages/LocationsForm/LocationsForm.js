@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
+
 import MapInput from '../../components/Inputs/MapInput/MapInput'
 import AddStopPlaceButton from '../../components/Buttons/AddStopPlaceButton/AddStopPlaceButton' 
 import DeleteStopPlaceButton from '../../components/Buttons/DeleteStopPlaceButton/DeleteStopPlaceButton'
 import Button from '../../assets/styles/Button/Button'
+
 import DistanceComponent from '../../components/DistanceComponent/DistanceComponent'
 import { ValidateMessageContext } from '../../components/Content/Content'
 
@@ -36,7 +38,7 @@ const LocationsForm = () => {
     ])
 
     const [distances, setDistances] = useState(null)
-
+    
     const [stopInputs, setStopInputs] = useState([])
 
     const validateLocationsForm = () => {

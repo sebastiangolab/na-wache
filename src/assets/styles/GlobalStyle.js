@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import background from '../images/background.svg'
 
 const GlobalStyle = createGlobalStyle`    
     *,
@@ -19,11 +18,8 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         font-size: 1.6rem;
         font-family: ${({theme}) => theme.fontFamily.montserrat};
-        background: url(${ background });
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 100%;
-        min-height: 100vh;
+        background-color: ${({theme}) => theme.colors.blue};
+
     }
 `
 

@@ -12,11 +12,13 @@ export const theme = {
         desktop: {
             default: '1.4rem',
             medium: '2rem',
-            socialIcon: '2.5rem',
+            socialIcon: '1.9rem',
             big: '3rem',
             resultTitle: '1.8rem',
-            resultValue: '2.5rem',
-            h1: '6rem',
+            resultValue: '2.9rem',
+            h1: '4.2rem',
+            h1Icon: '5.9rem',
+            h2: '2.5rem',
         }
     },
     fontFamily: {

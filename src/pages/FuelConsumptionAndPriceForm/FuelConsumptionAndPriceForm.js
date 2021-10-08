@@ -1,19 +1,31 @@
-import React, { useContext, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import React, { useContext, useState, useLayoutEffect } from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
+
 import NumberInput from '../../components/Inputs/NumberInput/NumberInput'
 import Button from '../../assets/styles/Button/Button'
+
 import { ValidateMessageContext } from '../../components/Content/Content'
 import { AppContext } from '../../store/store'
 
 const FuelConsumptionAndPriceForm = () => {
 
     const { setValidateMessageText } = useContext(ValidateMessageContext) 
-    const { formValues, setFormValues } = useContext(AppContext)
+    const { setPath, formValues, setFormValues } = useContext(AppContext)
+
+    const history = useHistory()
+    const location = useLocation()
+
+    useLayoutEffect(
+        () => {
+
+            if ( formValues.distance <= 0 ) history.push('/')
+
+            setPath(location.pathname)
+        }, []
+    )
 
     const [fuelConsumption, setFuelConsumption] = useState(formValues.fuelConsumption)
     const [fuelPrice, setFuelPrice] = useState(formValues.fuelPrice)
-
-    const history = useHistory()
 
     const validateFuelConsumptionAndPriceForm = () => {
         let result = true

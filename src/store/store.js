@@ -4,6 +4,8 @@ export const AppContext = createContext()
 
 export const StoreProvider = ({ children }) => {
 
+    const [path, setPath] = useState('/')
+
     const [formValues, setFormValues] = useState({
         distance: 0,
         fuelConsumption: '',
@@ -14,6 +16,8 @@ export const StoreProvider = ({ children }) => {
 
     return (
         <AppContext.Provider value={{
+            path,
+            setPath,
             formValues,
             setFormValues
         }}>

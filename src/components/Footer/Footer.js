@@ -1,24 +1,26 @@
 import React from 'react'
-
 import styled from 'styled-components'
 import { FaGithubAlt, FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
 
 const Wrapper = styled.div`
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-top: 9.5%;
+    margin-top: 20px;
+    justify-content: right;
+    margin-right: 30px;
+    margin-left: 30px;
 `
 
 const Author = styled.p`
-    font-size: ${({theme}) => theme.sizes.desktop.big};
+    font-size: ${({theme}) => theme.sizes.desktop.medium};
     color: ${({theme}) => theme.colors.white};
-    margin-bottom: 25px;
+    padding-bottom: 6px;
+    margin-right: 20px;
 `
 
 const Social = styled.a`
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
     font-size: ${({theme}) => theme.sizes.desktop.socialIcon};
     color: ${({theme}) => theme.colors.white};
     transition: color 0.3s;

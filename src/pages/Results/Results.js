@@ -1,5 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useLayoutEffect } from 'react'
+import { useLocation, useHistory } from 'react-router'
 import styled from 'styled-components'
+
 import { AppContext } from '../../store/store'
 
 const Wrapper = styled.div`
@@ -10,7 +12,7 @@ const Wrapper = styled.div`
 `
 
 const ResultWrapper = styled.div`
-    margin-bottom: 35px;
+    margin-bottom: 50px;
 `
 
 const ResultTitle = styled.h2`
@@ -27,7 +29,25 @@ const ResultValue = styled.p`
 
 const Results = () => {
 
-    const { formValues } = useContext(AppContext)
+    const { setPath, formValues } = useContext(AppContext)
+
+    const history = useHistory()
+    const location = useLocation()
+
+    useLayoutEffect(
+        () => {
+
+            if (
+                formValues.distance <= 0
+                || formValues.fuelConsumption !== ''
+                || formValues.fuelPrice !== ''
+                || formValues.numberPeople !== '' 
+            ) history.push('/')
+
+            setPath(location.pathname)
+        }, []
+    )
+
     const {
         distance,
         fuelConsumption,
