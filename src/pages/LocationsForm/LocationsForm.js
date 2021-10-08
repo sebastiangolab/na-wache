@@ -100,6 +100,7 @@ const LocationsForm = () => {
             <MapInput 
                 key='startPlace'
                 id='startPlace'
+                placeholder='Np. Kraków'
                 label='Miejsce startowe' 
                 placesValue={placesValue}
                 setPlacesValue={setPlacesValue}
@@ -128,6 +129,7 @@ const LocationsForm = () => {
             <MapInput 
                 key='endPlace'
                 id='endPlace'
+                placeholder='Np. Warszawa'
                 label='Miejsce docelowe' 
                 placesValue={placesValue}
                 setPlacesValue={setPlacesValue}

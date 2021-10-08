@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `
 
 const ResultWrapper = styled.div`
-    margin-bottom: 50px;
+    margin-bottom: ${props => !props.lastElement ? '50px' : '0'};
 `
 
 const ResultTitle = styled.h2`
@@ -64,7 +64,7 @@ const Results = () => {
         <Wrapper>
             <ResultWrapper>
                 <ResultTitle>Całkowity dystans wynosi:</ResultTitle>
-                <ResultValue>{finalDistance.toFixed(2)} km</ResultValue>
+                <ResultValue>{finalDistance.toFixed(1)} km</ResultValue>
             </ResultWrapper>
 
             <ResultWrapper>
@@ -72,7 +72,7 @@ const Results = () => {
                 <ResultValue>{priceForTravel.toFixed(2)} zł</ResultValue>
             </ResultWrapper>
 
-            <ResultWrapper>
+            <ResultWrapper lastElement>
                 <ResultTitle>Koszt przy podziale na {numberPeople}:</ResultTitle>
                 <ResultValue>{priceForPerson.toFixed(2)} zł</ResultValue>
             </ResultWrapper>

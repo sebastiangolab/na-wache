@@ -64,6 +64,7 @@ const BackAndNumberPeopleForm = () => {
     return (
         <>
             <NumberInput
+                placeholder='Np. 5'
                 label={'Ilość osób'}
                 value={numberPeople}
                 setValue={setNumberPeople}

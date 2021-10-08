@@ -14,8 +14,8 @@ export const theme = {
             medium: '2rem',
             socialIcon: '1.9rem',
             big: '3rem',
-            resultTitle: '1.8rem',
-            resultValue: '2.9rem',
+            resultTitle: '1.9rem',
+            resultValue: '3.4rem',
             h1: '4.2rem',
             h1Icon: '5.9rem',
             h2: '2.5rem',
@@ -27,5 +27,10 @@ export const theme = {
     fonts: {
         regular: '400',
         bold: '600',
+    },
+    rwdSizes: {
+        tablet: '991px',
+        bigPhone: '768px',
+        smallPhone: '480px',
     }
 }

@@ -6,7 +6,7 @@ import Label from '../../../assets/styles/Label/Label'
 import Input from '../../../assets/styles/Input/Input'
 import GoogleMapWrapper from '../../GoogleMapWrapper/GoogleMapWrapper'
 
-const MapInput = ({ id, label, placesValue, setPlacesValue }) => {
+const MapInput = ({ id, label, placeholder, placesValue, setPlacesValue }) => {
 
     const [ModalOpen, setModalOpen] = useState(false)
     const showModal = () => setModalOpen(true)
@@ -30,6 +30,7 @@ const MapInput = ({ id, label, placesValue, setPlacesValue }) => {
                 <Input 
                     type="text"
                     value={inputValue}
+                    placeholder={placeholder}
                     onChange={() => {}}
                     onClick={handleOnClick}
                 />
