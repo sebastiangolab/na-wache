@@ -39,9 +39,9 @@ const Results = () => {
 
             if (
                 formValues.distance <= 0
-                || formValues.fuelConsumption !== ''
-                || formValues.fuelPrice !== ''
-                || formValues.numberPeople !== '' 
+                || formValues.fuelConsumption === ''
+                || formValues.fuelPrice === ''
+                || formValues.numberPeople === '' 
             ) history.push('/')
 
             setPath(location.pathname)

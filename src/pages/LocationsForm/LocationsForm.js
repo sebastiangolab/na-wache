@@ -14,6 +14,10 @@ const StopInputWrapper = styled.div`
     align-items: center;
 `
 
+const PlacesButtonWrapper = styled.div`
+    display: flex;
+`
+
 const LocationsForm = () => {
 
     const { setValidateMessageText } = useContext(ValidateMessageContext)
@@ -101,23 +105,25 @@ const LocationsForm = () => {
                 setPlacesValue={setPlacesValue}
             />
 
-            <AddStopPlaceButton
-                placesValue={placesValue}
-                setPlacesValue={setPlacesValue}
-                stopInputs={stopInputs}
-                setStopInputs={setStopInputs}
-            />
-
             {stopInputsElements}  
 
-            { stopInputs.length > 0 &&
-                <DeleteStopPlaceButton
+            <PlacesButtonWrapper>
+                <AddStopPlaceButton
                     placesValue={placesValue}
                     setPlacesValue={setPlacesValue}
                     stopInputs={stopInputs}
                     setStopInputs={setStopInputs}
                 />
-            }
+
+                { stopInputs.length > 0 &&
+                    <DeleteStopPlaceButton
+                        placesValue={placesValue}
+                        setPlacesValue={setPlacesValue}
+                        stopInputs={stopInputs}
+                        setStopInputs={setStopInputs}
+                    />
+                }
+            </PlacesButtonWrapper>
 
             <MapInput 
                 key='endPlace'

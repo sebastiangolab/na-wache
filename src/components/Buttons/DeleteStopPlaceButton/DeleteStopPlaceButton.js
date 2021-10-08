@@ -6,7 +6,8 @@ const Wrapper = styled(Button)`
     width: auto;
     font-size: ${({theme}) => theme.sizes.desktop.default};
     margin-bottom: 35px;
-    padding: 12px 14px;
+    padding: 8px 14px;
+    margin-left: 15px;
 `
 
 const DeleteStopPlaceButton = ({

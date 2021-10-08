@@ -26,8 +26,8 @@ const BackAndNumberPeopleForm = () => {
 
             if (
                 formValues.distance <= 0
-                || formValues.fuelConsumption !== ''
-                || formValues.fuelPrice !== ''
+                || formValues.fuelConsumption === ''
+                || formValues.fuelPrice === ''
             ) history.push('/')
 
             setPath(location.pathname)
