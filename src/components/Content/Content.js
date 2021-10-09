@@ -19,10 +19,34 @@ import ValidateMessage from '../ValidateMessage/ValidateMessage'
 
 const Wrapper = styled.div`
     width: 100%;
-    max-width: 1027px;
+    max-width: 992px;
     padding: 75px 65px;
     background-color: ${({theme}) => theme.colors.white};
     border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
+        & {
+            min-height: calc(100vh - 127px);
+            padding: 40px 20px;
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.bigPhone}) {
+        & {
+            min-height: calc(100vh - 110px);
+            padding: 30px 15px;
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
+        & {
+            min-height: calc(100vh - 130px);
+            padding: 30px 10px;
+        }
+    }
 `
 
 const H2 = styled.h2`
@@ -30,6 +54,25 @@ const H2 = styled.h2`
     color: ${({theme}) => theme.colors.black};
     font-weight: ${({theme}) => theme.fonts.bold};
     margin-bottom: 35px;
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
+        & {
+            font-size: ${({theme}) => theme.sizes.tablet.h2};
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.bigPhone}) {
+        & {
+            margin-bottom: 30px;
+            font-size: ${({theme}) => theme.sizes.bigPhone.h2};
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
+        & {
+            font-size: ${({theme}) => theme.sizes.smallPhone.h2};
+        }
+    }
 `
 
 export const ValidateMessageContext = createContext()

@@ -8,6 +8,20 @@ const Wrapper = styled(Button)`
     margin-bottom: 35px;
     padding: 8px 14px;
     margin-left: 15px;
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.bigPhone}) {
+        & {
+            margin-bottom: 30px;
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
+        & {
+            font-size: ${({theme}) => theme.sizes.smallPhone.placeButton};
+            padding: 8px 12px;
+            margin-left: 5px;
+        }
+    }
 `
 
 const DeleteStopPlaceButton = ({

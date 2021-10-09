@@ -23,14 +23,19 @@ const BackAndNumberPeopleForm = () => {
 
     useLayoutEffect(
         () => {
+            let result = true
 
             if (
                 formValues.distance <= 0
                 || formValues.fuelConsumption === ''
                 || formValues.fuelPrice === ''
-            ) history.push('/')
-
-            setPath(location.pathname)
+            ) {
+                result = false
+                history.push('/')
+            }
+            
+            if (result === true)
+                setPath(location.pathname)
         }, []
     )
 

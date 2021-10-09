@@ -26,6 +26,19 @@ const Wrapper = styled.div`
 const StyledCombobox = styled(Combobox)`
     position: relative;
     width: 50%;
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
+        & {
+            width: 60%;
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.bigPhone}) {
+        & {
+            width: 65%;
+        }
+    }
+
 `
 
 const StyledInput = styled(Input)`
@@ -57,6 +70,26 @@ const StyledButton = styled(Button)`
     width: 150px;
     margin-left: 5px;
     padding: 5px;
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
+        & {
+            width: 140px;
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.bigPhone}) {
+        & {
+            width: 130px;
+        }
+    }
+
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
+        & {
+            width: 100px;
+        }
+    }
+
 `
 
 const SearchMapInput = ({ mapPanTo, setInputAdressObject }) => {

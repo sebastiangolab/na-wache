@@ -16,6 +16,23 @@ const Wrapper = styled(Button)`
         font-size: 25px;
         margin-right: 5px;
     }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.bigPhone}) {
+        & {
+            margin-bottom: 30px;
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
+        & {
+            font-size: ${({theme}) => theme.sizes.smallPhone.placeButton};
+            padding: 8px 12px;
+        }
+
+        & strong {
+            margin-right: 2px;
+        }
+    }
 `
 const AddStopPlaceButton = ({ placesValue, setPlacesValue, stopInputs, setStopInputs }) => {
 

@@ -19,7 +19,12 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1.6rem;
         font-family: ${({theme}) => theme.fontFamily.montserrat};
         background-color: ${({theme}) => theme.colors.blue};
+    }
 
+    @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
+        body {
+            background-color: ${({theme}) => theme.colors.white};
+        }
     }
 `
 

@@ -17,6 +17,12 @@ const Button = styled.button`
     &:hover {
         background-color: ${({theme}) => theme.colors.blueHover};
     }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
+        & {
+            width: 100%;
+        }
+    }
 `
 
 export default Button

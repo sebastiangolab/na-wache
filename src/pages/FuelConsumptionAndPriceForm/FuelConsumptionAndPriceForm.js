@@ -17,10 +17,15 @@ const FuelConsumptionAndPriceForm = () => {
 
     useLayoutEffect(
         () => {
+            let result = true
 
-            if ( formValues.distance <= 0 ) history.push('/')
+            if ( formValues.distance <= 0 ) {
+                result = false
+                history.push('/')
+            }
 
-            setPath(location.pathname)
+            if (result === true)
+                setPath(location.pathname)
         }, []
     )
 

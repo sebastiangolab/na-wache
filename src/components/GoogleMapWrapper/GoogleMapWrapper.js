@@ -1,16 +1,10 @@
-import React, { useCallback, useRef, useContext, useState } from 'react'
+import React, { useCallback, useRef, useContext, useState, useEffect } from 'react'
 import { ModalContext } from '../Modal/Modal'
 import styled from 'styled-components'
 import { GoogleMap, Marker } from '@react-google-maps/api'
 import GoogleMapLoad from '../GoogleMapLoad/GoogleMapLoad'
 import GoogleMapSearchForm from '../GoogleMapSearchForm/GoogleMapSearchForm'
 import CloseMapButton from '../Buttons/CloseMapButton/CloseMapButton'
-
-const mapContainerStyle = {
-    width: '80vw',
-    height: '80vh',
-    zIndex: '1',
-}
 
 const zoomMap = 10
 
@@ -33,6 +27,52 @@ const Wrapper = styled.div`
 `
 
 const GoogleMapWrapper = ({ setInputAdressObject }) => {
+
+    const [mapContainerStyle, setMapContainerStyle] = useState({
+        width: '90vw',
+        height: '90vh',
+        zIndex: '1',
+    })
+
+    const getWindowWidth = () => {
+        const { innerWidth: width} = window;
+        return width
+    }
+
+    const setMapStyles = width => {
+        if (width > 991) {
+            setMapContainerStyle({
+                width: '90vw',
+                height: '90vh',
+                zIndex: '1',
+            })
+        } else if (width <= 991 && width > 768) {
+            setMapContainerStyle({
+                width: '95vw',
+                height: '95vh',
+                zIndex: '1',
+            })
+        } else if ( width <= 768) {
+            setMapContainerStyle({
+                width: '100vw',
+                height: '100vh',
+                zIndex: '1',
+            })
+        } 
+    }
+      
+    useEffect(() => {
+        const width = getWindowWidth()
+        setMapStyles(width)
+
+        const handleResize = () => {
+            const width = getWindowWidth()
+            setMapStyles(width)
+        }
+    
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const { hideModal } = useContext(ModalContext)
     const [MarkerCoords, setMarkerCoords] = useState(null)

@@ -13,6 +13,12 @@ const Input = styled.input`
         outline: none;
         border: 1px solid ${({theme}) => theme.colors.blue};
     }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.bigPhone}) {
+        & {
+            margin-bottom: 30px;
+        }
+    }
 `
 
 export default Input

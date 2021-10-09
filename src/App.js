@@ -20,6 +20,7 @@ const App = () => {
                 <StoreProvider>
                     <Content />
                 </StoreProvider>
+                <Footer mobileDisplay={true} />
             </FlexContainer>
         </ThemeProvider>
         

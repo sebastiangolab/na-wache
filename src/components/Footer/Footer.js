@@ -3,19 +3,55 @@ import styled from 'styled-components'
 import { FaGithubAlt, FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
 
 const Wrapper = styled.div`
-    display: flex;
+    display: ${props => !props.mobileDisplay ? 'flex' : 'none'};
     align-items: center;
-    margin-top: 20px;
+    padding-top: 15px;
     justify-content: right;
-    margin-right: 30px;
-    margin-left: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
+        & {
+            display: ${props => props.mobileDisplay ? 'flex' : 'none'};
+            justify-content: flex-start;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 15px;
+            padding-bottom: 7px;
+            background-color: ${({theme}) => theme.colors.blue};
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
+        & {
+           flex-direction: column;
+        }
+    }
 `
 
 const Author = styled.p`
     font-size: ${({theme}) => theme.sizes.desktop.medium};
     color: ${({theme}) => theme.colors.white};
-    padding-bottom: 6px;
+    padding-bottom: 9px;
     margin-right: 20px;
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
+        & {
+            font-size: ${({theme}) => theme.sizes.tablet.footer};
+            margin-right: 10px;
+            padding-bottom: 5px;
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
+        & {
+            margin-right: 0;
+            margin-bottom: 5px;
+         }
+    }
 `
 
 const Social = styled.a`
@@ -28,10 +64,25 @@ const Social = styled.a`
     &:hover {
         color: ${({theme}) => theme.colors.gray};
     }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
+        & {
+            font-size: ${({theme}) => theme.sizes.tablet.socialIcon};
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
+        & {
+            margin-left: 12px;
+            margin-right: 12px;
+         }
+    }
 `
 
-const Footer = () => (
-    <Wrapper>
+const Footer = ({ mobileDisplay }) => (
+    <Wrapper mobileDisplay={mobileDisplay}>
         <Author>Autor: Sebastian Gołąb</Author>
         <div>
             <Social href="https://github.com/sebastiangolab" target="_blank">

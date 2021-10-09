@@ -28,6 +28,20 @@ const Wrapper = styled.button`
     &:focus {
         outline: none;
     }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
+        & {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.bigPhone}) {
+        & {
+            display: none;
+        }
+    }
+        
 `
 
 const CloseMapButton = props => <Wrapper {...props}>X</Wrapper>

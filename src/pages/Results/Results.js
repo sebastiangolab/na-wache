@@ -9,22 +9,64 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    
+    @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
+        & {
+            padding: 10px 0;
+         }
+    }
 `
 
 const ResultWrapper = styled.div`
     margin-bottom: ${props => !props.lastElement ? '50px' : '0'};
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
+        & {
+            margin-bottom: ${props => !props.lastElement ? '50px' : '0'};
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.bigPhone}) {
+        & {
+            margin-bottom: ${props => !props.lastElement ? '45px' : '0'};
+        }
+    }
 `
 
 const ResultTitle = styled.h2`
     font-size: ${({theme}) => theme.sizes.desktop.resultTitle};
     font-weight: ${({theme}) => theme.fonts.bold};
     margin-bottom: 12px;
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
+        & {
+            font-size: ${({theme}) => theme.sizes.tablet.resultTitle};
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
+        & {
+            font-size: ${({theme}) => theme.sizes.smallPhone.resultTitle};
+         }
+    }
 `
 
 const ResultValue = styled.p`
     color: ${({theme}) => theme.colors.blue};
     font-size: ${({theme}) => theme.sizes.desktop.resultValue};
     font-weight: ${({theme}) => theme.fonts.bold};
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
+        & {
+            font-size: ${({theme}) => theme.sizes.tablet.resultValue};
+        }
+    }
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
+        & {
+            font-size: ${({theme}) => theme.sizes.smallPhone.resultValue};
+         }
+    }
 `
 
 const Results = () => {
@@ -36,15 +78,20 @@ const Results = () => {
 
     useLayoutEffect(
         () => {
+            let result = true
 
             if (
                 formValues.distance <= 0
                 || formValues.fuelConsumption === ''
                 || formValues.fuelPrice === ''
                 || formValues.numberPeople === '' 
-            ) history.push('/')
+            ) {
+                result = false
+                history.push('/')
+            }
 
-            setPath(location.pathname)
+            if (result === true)
+                setPath(location.pathname)
         }, []
     )
 

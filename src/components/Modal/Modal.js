@@ -10,6 +10,8 @@ const Wrapper = styled.dialog`
     padding: 0;
     border: none;
     z-index: -1;
+    max-width: 100%;
+    max-height: 100%;
 
     &::backdrop {
         width: 100%;
