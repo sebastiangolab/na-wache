@@ -46,7 +46,6 @@ const NumberInput = ({ label, placeholder, unit, value, setValue }) => {
                     placeholder={placeholder}
                     value={value}
                     onChange={handleOnChange}
-                    min={'1'}
                 />
                 {unit &&
                     <NumberInputUnit>{unit}</NumberInputUnit>

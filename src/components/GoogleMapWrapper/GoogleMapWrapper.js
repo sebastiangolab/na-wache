@@ -1,10 +1,13 @@
 import React, { useCallback, useRef, useContext, useState, useEffect } from 'react'
-import { ModalContext } from '../Modal/Modal'
+import { use100vh } from 'react-div-100vh'
 import styled from 'styled-components'
+
 import { GoogleMap, Marker } from '@react-google-maps/api'
 import GoogleMapLoad from '../GoogleMapLoad/GoogleMapLoad'
 import GoogleMapSearchForm from '../GoogleMapSearchForm/GoogleMapSearchForm'
 import CloseMapButton from '../Buttons/CloseMapButton/CloseMapButton'
+
+import { ModalContext } from '../Modal/Modal'
 
 const zoomMap = 10
 
@@ -24,6 +27,19 @@ const Wrapper = styled.div`
     position: relative;
     overflow: hidden;
     border: 1px solid ${({theme}) => theme.colors.white};
+`
+
+const MapComponentsContainer = styled.div`
+
+    @media (max-width: ${({theme}) => theme.rwdSizes.bigPhone}) {
+        & {
+            width: 100vw;
+            height: ${props => props.height100vh}px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
 `
 
 const GoogleMapWrapper = ({ setInputAdressObject }) => {
@@ -92,6 +108,8 @@ const GoogleMapWrapper = ({ setInputAdressObject }) => {
         mapRef.current.setZoom(15)
         setMarkerCoords({ lat, lng })
     }
+
+    const height100vh = use100vh()
     
     return (
         <Wrapper>
@@ -109,8 +127,10 @@ const GoogleMapWrapper = ({ setInputAdressObject }) => {
                         />
                     }
                 </GoogleMap>
-                <CloseMapButton onClick={hideModal} />
-                <GoogleMapSearchForm mapPanTo={mapPanTo} setInputAdressObject={setInputAdressObject} />
+                <MapComponentsContainer height100vh={height100vh}>
+                    <CloseMapButton onClick={hideModal} />
+                    <GoogleMapSearchForm mapPanTo={mapPanTo} setInputAdressObject={setInputAdressObject} />
+                </MapComponentsContainer>
             </GoogleMapLoad>
         </Wrapper>
     )

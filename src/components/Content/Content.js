@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useState } from 'react'
+import { use100vh } from 'react-div-100vh'
 import styled from 'styled-components'
 
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Switch,
     Route
 } from "react-router-dom";
@@ -29,21 +30,21 @@ const Wrapper = styled.div`
 
     @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
         & {
-            min-height: calc(100vh - 127px);
+            min-height: calc(${props => props.height100vh}px - 127px);
             padding: 40px 20px;
         }
     }
 
     @media (max-width: ${({theme}) => theme.rwdSizes.bigPhone}) {
         & {
-            min-height: calc(100vh - 110px);
+            min-height: calc(${props => props.height100vh}px - 110px);
             padding: 30px 15px;
         }
     }
 
     @media (max-width: ${({theme}) => theme.rwdSizes.smallPhone}) {
         & {
-            min-height: calc(100vh - 130px);
+            min-height: calc(${props => props.height100vh}px - 130px);
             padding: 30px 10px;
         }
     }
@@ -82,6 +83,8 @@ const Content = () => {
     const { path } = useContext(AppContext)
     const [validateMessageText, setValidateMessageText] = useState('')
 
+    const height100vh = use100vh()
+
     const isDisplayH2 = () => {
         if (path === '/' || path === '/fuel-consumption-and-price' || path === '/back-and-number-people') {
             return true
@@ -90,8 +93,10 @@ const Content = () => {
         }
     }
 
+    console.log(height100vh)
+
     return (
-        <Wrapper>
+        <Wrapper height100vh={height100vh}>
             {isDisplayH2() &&
                 <H2>Oblicz po ile składka na paliwo</H2>
             }

@@ -65,7 +65,7 @@ const FuelConsumptionAndPriceForm = () => {
     return (
         <>
             <NumberInput
-                placeholder='Np. 6,7'
+                placeholder='Np. 6.7'
                 label='Średnie spalanie pojazdu'
                 unit='l / 100km'
                 value={fuelConsumption}
@@ -73,7 +73,7 @@ const FuelConsumptionAndPriceForm = () => {
             />
 
             <NumberInput
-                placeholder='Np. 5,64'
+                placeholder='Np. 5.64'
                 label='Średnia cena paliwa'
                 unit='zł / l'
                 value={fuelPrice}

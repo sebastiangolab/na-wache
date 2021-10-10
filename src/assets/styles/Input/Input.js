@@ -8,6 +8,7 @@ const Input = styled.input`
     transition: border 0.3s;
     margin-bottom: 35px;
     border-radius: 3px;
+    box-shadow: none;
 
     &:focus {
         outline: none;
