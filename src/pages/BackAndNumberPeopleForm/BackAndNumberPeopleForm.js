@@ -48,6 +48,9 @@ const BackAndNumberPeopleForm = () => {
         if (numberPeople <= 0) 
             result = 'Ilość osób musi być większa niż 0' 
 
+        if (Number.isInteger(1 * numberPeople) === false) 
+            result = 'Ilość osób musi być liczbą całkowitą' 
+
         setValidateMessageText('')
         return result
     }

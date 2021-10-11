@@ -2,6 +2,8 @@ import React, { useContext, useLayoutEffect } from 'react'
 import { useLocation, useHistory } from 'react-router'
 import styled from 'styled-components'
 
+import Button from '../../assets/styles/Button/Button'
+
 import { AppContext } from '../../store/store'
 
 const Wrapper = styled.div`
@@ -18,17 +20,17 @@ const Wrapper = styled.div`
 `
 
 const ResultWrapper = styled.div`
-    margin-bottom: ${props => !props.lastElement ? '50px' : '0'};
+    margin-bottom: ${props => !props.lastElement ? '40px' : '0'};
 
     @media (max-width: ${({theme}) => theme.rwdSizes.tablet}) {
         & {
-            margin-bottom: ${props => !props.lastElement ? '50px' : '0'};
+            margin-bottom: ${props => !props.lastElement ? '40px' : '0'};
         }
     }
 
     @media (max-width: ${({theme}) => theme.rwdSizes.bigPhone}) {
         & {
-            margin-bottom: ${props => !props.lastElement ? '45px' : '0'};
+            margin-bottom: ${props => !props.lastElement ? '35px' : '0'};
         }
     }
 `
@@ -51,6 +53,10 @@ const ResultTitle = styled.h2`
     }
 `
 
+const StyledButton = styled(Button)`
+    margin-top: 35px;
+`
+
 const ResultValue = styled.p`
     color: ${({theme}) => theme.colors.blue};
     font-size: ${({theme}) => theme.sizes.desktop.resultValue};
@@ -71,7 +77,7 @@ const ResultValue = styled.p`
 
 const Results = () => {
 
-    const { setPath, formValues } = useContext(AppContext)
+    const { setPath, formValues, setFormValues } = useContext(AppContext)
 
     const history = useHistory()
     const location = useLocation()
@@ -94,6 +100,20 @@ const Results = () => {
                 setPath(location.pathname)
         }, []
     )
+
+    const handleOnClick = () => {
+        setFormValues({
+            distance: 0,
+            fuelConsumption: '',
+            fuelPrice: '',
+            numberPeople: '',
+            isWayBack: 1
+        })
+
+        setPath('/')
+
+        history.push('/')
+    }
 
     const {
         distance,
@@ -123,6 +143,8 @@ const Results = () => {
                 <ResultTitle>Koszt przy podziale na {numberPeople}:</ResultTitle>
                 <ResultValue>{priceForPerson.toFixed(2)} zł</ResultValue>
             </ResultWrapper>
+
+            <StyledButton onClick={handleOnClick}>Strona główna</StyledButton>
         </Wrapper>
     )
 }
