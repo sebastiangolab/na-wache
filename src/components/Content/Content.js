@@ -3,7 +3,7 @@ import { use100vh } from 'react-div-100vh'
 import styled from 'styled-components'
 
 import {
-    HashRouter as Router,
+    BrowserRouter as Router,
     Switch,
     Route
 } from "react-router-dom";
@@ -105,7 +105,7 @@ const Content = () => {
                 validateMessageText,
                 setValidateMessageText,
             }}>
-                <Router>
+                <Router basename={'/na-wache'}>
                     <Switch>
                         <Route exact path='/' component={LocationsForm} />
                         <Route exact path='/fuel-consumption-and-price' component={FuelConsumptionAndPriceForm} />
