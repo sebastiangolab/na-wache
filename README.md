@@ -2,6 +2,9 @@
 ## About The Project
 You can use application to calculate how much you must pay for fuel on trip with friends.
 
+### Project Link
+http://sebastiangolab.pl/na-wache
+
 <!-- BUILD WITH -->
 ## Build With
 <ul>
@@ -52,8 +55,6 @@ To get a local copy up and running follow these simple steps.
 ## Contact
 
 Sebastian Gołąb - sebagolab97@gmail.com
-
-Project Link: http://sebastiangolab.pl/na-wache
 
 
 
